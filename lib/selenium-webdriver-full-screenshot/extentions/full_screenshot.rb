@@ -10,12 +10,15 @@ module Selenium
              scroll_height = widnow_inner_height * cnt
              crop_height = scroll_height + widnow_inner_height - page_height
              crop_height = crop_height ? crop_height : 0
-             imgs << {
-               img: ChunkyPNG::Image.from_blob(@bridge.screenshot.unpack('m')[0]),
-               crop_height: crop_height,
-               window_height: widnow_inner_height,
-               window_width: widnow_inner_width
-             }
+             # puts "#{scroll_height}, #{crop_height}"
+             if crop_height < widnow_inner_height
+               imgs << {
+                 img: ChunkyPNG::Image.from_blob(@bridge.screenshot.unpack('m')[0]),
+                 crop_height: crop_height,
+                 window_height: widnow_inner_height,
+                 window_width: widnow_inner_width
+               }
+             end
            end
            full_screenshot_png(imgs, filename)
          end
@@ -29,14 +32,17 @@ module Selenium
            last_img = imgs.pop
            last_crop_pos_y = last_img[:crop_height] * retina
            png_height -= last_crop_pos_y
+           # binding.pry
            imgs << {
              img: last_img[:img].crop(0, last_crop_pos_y, last_img[:img].width, last_img[:img].height - last_crop_pos_y)
            }
            png = ChunkyPNG::Image.new(png_width, png_height, ChunkyPNG::Color::TRANSPARENT)
+           # binding.pry
            imgs.each_with_index do |img, idx|
              png.compose!(img[:img], 0, compose_height)
              compose_height += img[:img].height
            end
+           puts "full_screenshot_png: #{filename}"
            png.save("#{filename}.png")
          end
 
