@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'full-screenshot/version'
+require 'selenium-webdriver-full-screenshot/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "selenium-webdriver-full-screenshot"
@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["deepriver"]
   spec.email         = ["yoshiyuki.yamada.1984@gmail.com"]
 
-  spec.summary       = "Extended FullPageScreenshots To Selenium::Webdriver"
-  spec.description   = "Extended FullPageScreenshots To Selenium::Webdriver"
+  spec.summary       = "Extended FullScreenshots To Selenium::Webdriver"
+  spec.description   = "Extended FullScreenshots To Selenium::Webdriver"
   spec.homepage      = "https://github.com/deepriver/selenium-webdriver-full-screenshot"
   spec.license       = "MIT"
 
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
   spec.add_dependency "selenium-webdriver", "~> 3.0"
-  spec.add_dependency "oily_png", "~> 1.2.1"
+  spec.add_dependency "oily_png", "~> 1.2"
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"

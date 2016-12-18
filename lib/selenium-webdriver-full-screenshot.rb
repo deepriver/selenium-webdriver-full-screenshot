@@ -1,6 +1,6 @@
 require 'selenium-webdriver'
-require "full-screenshot/version"
-require "full-screenshot/extentions/full_screenshot"
+require "selenium-webdriver-full-screenshot/version"
+require "selenium-webdriver-full-screenshot/extentions/full_screenshot"
 require "oily_png"
 
 module Selenium
