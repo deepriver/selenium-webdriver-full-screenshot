@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'Selenium-webdriver'
+require 'selenium-webdriver-full-screenshot'
+
+driver = Selenium::WebDriver.for :firefox # or :chrome
+driver.full_screenshot('sample') # FullScreenshot
+```
 
 ## Development
 
